@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de fiestas</title>
+    <link rel="stylesheet" href="css/estilosay_registro.css"> 
+    <link rel="icon" href="logo.png" type="image/x-icon">
+
+</head>
+<body>
+    <header>
+        <h1><a href="principal.html" class="texto-degradado"><img src="white.png" alt="blaack"  height="45px" width="40px"/>Black Swan</a></h1>
+        <nav>
+          <ul>
+            <li><a href="#">Ver Listado</a></li>
+            <li><a href="formulario.html">Iniciar Sesión</a></li>
+            <li>
+              <a href="https://www.instagram.com/black_swam1128?igsh=MzVkdGJlc2poN3I2" target="_blank">
+                <img src="iconoinsta.png" alt="Instagram" class="icono-instagram">
+              </a> 
+            </li>
+          </ul>
+        </nav>
+      </header>
+      
+      <!--agregar evento-->
+    <div id="contenedor_formulario">
+      <h1 class="h1">Agregar evento</h1>
+
+
+    
+  <form id="formulario">
+    <input type="text" name="nombre" placeholder="Nombre evento" id="nombre" required>
+    <input type="text" name="descripcion" placeholder="Descripcion" id="desc" required>
+    <input type="text" name="fechaInicio" placeholder="Fecha inicio del evento" id="feIn" required>
+    <input type="text" name="duracion" placeholder="Duracion" id="dura" required>
+    <input type="text" name="unidadDuracion" placeholder="Unidad duracion" id="uniDura" required>
+    <input type="text" name="direccion" placeholder="Direccion" id="direc" required>
+    <input type="text" name="aforoMaximo" placeholder="Aforo" id="afMax" required>
+    <input type="text" name="estado" placeholder="Estado" id="est" required>
+    <input type="text" name="destacado" placeholder="Destacado" id="dest" required>
+    <input type="text" name="precio" placeholder="Precio" id="prec" required>
+    <input type="text" name="tipo" placeholder="Tipo del 1 al 5" id="tip" required>
+
+    <button type="submit">Agregar</button>
+    
+  </form>
+
+ 
+
+    <div id="contenedor_tabla">
+      <table>
+        <thead>
+          <!--tr para las filas-->
+          <tr>
+            <!-- th para las columnas-->
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Precio</th>
+            <th>Aforo</th>
+            <th> </th>
+            <th> </th>
+            <th> </th>
+          </tr>
+        </thead>
+        <tbody id="tabla_cuerpo"></tbody>
+      </table>
+    </div>
+    <br>
+      <div id="contenedorModificar">
+        <form id="formularioModificar"></form>
+      </div>
+    </div>
+    
+      
+    <script src="js/script_registro2.js"></script>
+    
+  </body>
+</html>

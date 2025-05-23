@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login / Registro</title>
+    <link rel="stylesheet" href="css/estilo.css" />
+    <link type="image/png" rel="icon" href="imagenes/logo.png" />
+</head>
+
+<body>
+    <div class="contenedor" id="contenedor">
+      
+        <div class="form-contenedor sign-up-contenedor">
+            <form id="formRegister">
+                <h2>Regístrate Aquí</h2>
+                <input type="text" placeholder="Nombre" id="nombreR" required />
+                <input type="text" placeholder="Apellido" id="apellidoR" required />
+                <input type="email" placeholder="Correo" id="emailR" required />
+                <input type="password" placeholder="Contraseña" id="passwordR" required />
+                <select id="roleRegister" required>
+                    <option value="user">Usuario</option>
+                    <option value="admin">Admin</option>
+                </select>
+                <button type="submit">Registrarse</button>
+            </form>
+        </div>
+
+        <div class="form-contenedor sign-in-contenedor">
+            <form id="formLogin">
+                <h2>Iniciar Sesión</h2>
+                <input type="email" placeholder="Correo" id="email" required />
+                <input type="password" placeholder="Contraseña" id="password" required />
+                <select id="roleLogin" required>
+                    <option value="user">Usuario</option>
+                    <option value="admin">Admin</option>
+                </select>
+                <div id="contenedor-error"></div> 
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
+
+       
+        <div class="cubrir-contenedor">
+            <div class="cubrir">
+                <div class="cubrir-panel cubrir-left">
+                    <h1>Bienvenido otra vez</h1>
+                    <p>Da click en el botón para iniciar sesión</p>
+                    <button class="ghost" id="signIn">Iniciar sesión</button>
+                </div>
+                <div class="cubrir-panel cubrir-right">
+                    <h1>¿Aún no tienes cuenta?</h1>
+                    <p>Da click en el botón para registrarte </p>
+                    <button class="ghost" id="signUp">Registrarse</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/LoginSignUp.js"></script>
+</body>
+
+</html>

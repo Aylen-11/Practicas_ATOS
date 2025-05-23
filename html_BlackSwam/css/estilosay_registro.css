@@ -1,0 +1,225 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+background: linear-gradient(to right, #380303, #7b2c2c, #380303);
+display: flex;
+justify-content: space-between;
+align-items: center;
+position: fixed;
+width: 100%;
+top: 0;
+z-index: 10;
+font-size: 8px;
+padding: 10px 20px; 
+}
+.texto-degradado {
+  font-size: 30px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
+  background: linear-gradient(to right, #ffffff, #ff8080, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin-left: 10px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 17px;
+  transition: color 0.3s;
+  margin-left: 60px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+nav ul li a:hover {
+  color: rgb(0, 0, 0);
+}
+
+.icono-instagram {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.3s;
+  margin-right: 90px;
+}
+
+.icono-instagram:hover {
+  transform: scale(1.1);
+}
+
+#descargarJson{
+  width: 150px;
+  height: 20px;
+}
+
+#contenedor_formulario{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  margin-top: 115px;
+}
+#segundo_contenedor_formulario{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+#contenedor_tabla{
+margin-top: 50px;
+--border-width: 5px;
+position: relative;
+display: flex;
+justify-content: center;
+font-family: Georgia, 'Times New Roman', Times, serif;
+align-items: center;  
+width: auto;
+height: auto;
+font-size: 17px;
+text-size-adjust: 15px;
+text-transform: uppercase;
+color: #430202;
+background: #ffffff;
+border-radius: 10px;
+
+&::after {
+  position: absolute;
+  content: "";
+  top: calc(-1 * var(--border-width));
+  left: calc(-1 * var(--border-width));
+  z-index: -1;
+  width: calc(100% + var(--border-width) * 2);
+  height: calc(100% + var(--border-width) * 2);
+  background: linear-gradient(
+    60deg,
+    #380303,
+    #a74b4b,
+    #380303
+  );
+  background-size: 700% 700%;
+  background-position: 0 50%;
+  border-radius: 10px;
+  animation: moveGradient 4s alternate infinite;
+}
+}
+
+@keyframes moveGradient {
+50% {
+  background-position: 200% 50%;
+}
+}
+
+#contenedor_tabla th {
+padding: 70px;
+}
+#contenedor_tabla tbody{
+align-content: center;
+
+}
+.h1{
+font-size: 40px;
+font-family: Georgia, 'Times New Roman', Times, serif;
+color: #470404;
+
+
+}
+
+#formulario {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+background: linear-gradient(45deg, #380e0e, #781e1e, #380e0e);
+padding: 40px;
+border-radius: 12px;
+margin: 10px auto;
+width: 90%;
+max-width: 6000px;
+gap: 20px;
+}
+
+input[type="text"],
+input[type="file"] {
+padding: 12px 20px;
+border-radius: 10px;
+border: none;
+outline: none;
+width: 220px;
+font-size: 14px;
+}
+
+button {
+background: linear-gradient(to right, #ffffff, #e6b2b2);
+color: rgb(91, 0, 0);
+font-family: Georgia, 'Times New Roman', Times, serif;
+padding: 12px 25px;
+border: none;
+cursor: pointer;
+font-size: 16px;
+border-radius: 5px;
+font-weight: bold;
+box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+transition: transform 0.2s ease;
+}
+
+button:hover {
+transform: scale(1.05);
+}
+
+#mensaje {
+width: 100%;
+text-align: center;
+margin-top: 0px;
+font-size: 60px;
+color: #ffffff;
+}
+
+input[type="file"] {
+display: none;
+}
+
+.label-file {
+background: linear-gradient(to right, #ffffff, #ffd2d2);
+color: rgb(91, 0, 0);
+font-family: Georgia, 'Times New Roman', Times, serif;
+padding: 13px 26px;
+border: none;
+cursor: pointer;
+font-size: 14px;
+border-radius: 5px;
+font-weight: bold;
+box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+transition: transform 0.2s ease;
+display: inline-block;
+text-align: center;
+}
+
+.label-file:hover {
+transform: scale(1.05);
+}
+
+/*estilos popup*/
+
