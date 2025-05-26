@@ -12,6 +12,88 @@ body {
     background-size: cover;
 }
 
+
+header {
+  background: linear-gradient(to right, #380303, #792929, #380303);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+  font-size: 12px;
+  padding: 10px 20px;
+}
+
+.texto-degradado {
+  font-size: 30px;
+  font-family: 'Prata', serif;
+  font-weight: bold;
+  background: linear-gradient(to bottom, #460202, #fc8e8e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin-left: 8px;
+  text-decoration: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+}
+
+.royal {
+  background: linear-gradient(to right, #380303, #751f1f, #380303);
+  font-size: 100px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+
+}
+
+
+.texto-solo {
+  font-size: 30px;
+  font-family: 'Prata', serif;
+  font-weight: bold;
+  background: linear-gradient(to bottom, hsl(0, 70%, 65%), #2a0000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin-left: 9px;
+  position: relative;
+  top: 7px;
+}
+
+.imglogo {
+  display: block;
+
+}
+
+
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 19px;
+  margin-left: 60px;
+  font-family: 'Prata', serif;
+}
+
+nav ul li a:hover {
+  color: #ffd6d6;
+}
+
+
 /* Reset básico */
 * {
     box-sizing: border-box;
@@ -213,4 +295,18 @@ input, select {
 
 .contenedor.right-panel-active .cubrir-right {
     transform: translateX(20%);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 20px;
+}
+
+::-webkit-scrollbar-track {
+    border: 8px solid var(--hard-purple);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: linear-gradient(45deg, #f49f9f, #3f0101);
 }

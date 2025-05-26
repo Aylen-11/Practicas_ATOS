@@ -113,7 +113,8 @@ async function getEventos() {
                     console.log(data);
 
                     const formu = document.getElementById('formularioModificar');
-
+                    formu.innerHTML = '';
+                    
                     const inputNombre = document.createElement('input');
                     inputNombre.value = data.nombre;
 
