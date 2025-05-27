@@ -45,8 +45,9 @@ async function getEventos() {
             const tdVer = document.createElement('td');
             const btnVer = document.createElement('button');
             btnVer.textContent = 'Ver';
+            btnVer.classList.add('btn-ver');
             tdVer.appendChild(btnVer);
-            tr.appendChild(tdVer);
+            tr.appendChild(tdVer); 
 
             btnVer.addEventListener('click', async () => {
 
@@ -103,6 +104,7 @@ async function getEventos() {
             const tdModificar = document.createElement('td');
             const btnModificar = document.createElement('button');
             btnModificar.textContent = 'Modificar';
+            btnModificar.classList.add('btn-modificar');
             tdModificar.appendChild(btnModificar);
             tr.appendChild(tdModificar);
 
@@ -151,10 +153,12 @@ async function getEventos() {
                     const botonGuardar = document.createElement('button');
                     botonGuardar.type = 'submit';
                     botonGuardar.textContent = 'Guardar';
+                    botonGuardar.classList.add('btn-guardar');
 
                     const botonCerrar = document.createElement('button');
                     botonCerrar.type = 'button';
                     botonCerrar.textContent = 'Cerrar';
+                    botonCerrar.classList.add('btn-cerrar');
 
                     botonCerrar.addEventListener('click', () => {
                         document.getElementById('formularioModificar').innerHTML = '';
@@ -215,6 +219,7 @@ async function getEventos() {
             const tdVerReserva = document.createElement('td');
             const botonVerReserva = document.createElement('button');
             botonVerReserva.textContent = 'Ver reserva';
+            botonVerReserva.classList.add('btn-verreserva');
             tdVerReserva.appendChild(botonVerReserva);
             tr.appendChild(tdVerReserva);
 
@@ -252,6 +257,7 @@ async function getEventos() {
                             const botonCerrar = document.createElement('button');
                             botonCerrar.type = 'button';
                             botonCerrar.textContent = 'Cerrar';
+                            botonCerrar.classList.add('btn-cerrar');
                             botonCerrar.addEventListener('click', () => {
                                 listaReserva.innerHTML = '';
                             });
@@ -282,6 +288,7 @@ async function getEventos() {
             const tdEliminar = document.createElement('td');
             const btnEliminar = document.createElement('button');
             btnEliminar.textContent = 'Eliminar';
+            btnEliminar.classList.add('btn-eliminar');
             tdEliminar.appendChild(btnEliminar);
             tr.appendChild(tdEliminar);
 

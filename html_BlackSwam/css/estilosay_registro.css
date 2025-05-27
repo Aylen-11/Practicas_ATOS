@@ -111,7 +111,7 @@ nav ul li a:hover {
 #contenedor_formulario {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
 
   margin-top: 115px;
@@ -130,6 +130,7 @@ nav ul li a:hover {
   position: relative;
   display: flex;
   justify-content: center;
+  text-align: center;
   font-family: Georgia, 'Times New Roman', Times, serif;
   align-items: center;
   width: auto;
@@ -152,10 +153,10 @@ nav ul li a:hover {
     background: linear-gradient(60deg,
         #8f0505,
         #a74b4b,
-        #380303);
+        #790606);
     background-size: 600% 600%;
     background-position: 0 50%;
-    border-radius: 10px;
+    border-radius: 10px; 
     animation: moveGradient 4s alternate infinite;
   }
 }
@@ -167,40 +168,51 @@ nav ul li a:hover {
 }
 
 #contenedor_tabla th {
-  padding: 70px;
+  padding: 45px 86px;
 }
 
 #contenedor_tabla tbody {
   align-content: center;
 
 }
+#contenedor_tabla tbody tr {
+  background-color: #fcf3f3; /* rosa muy claro */
+  color: #430202; /* texto color oscuro */
+}
+
 
 .h1 {
   font-size: 40px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: #ffffff;
-
-
+  text-align: center;
 }
 
 #formulario {
-  background-color: #6b0000;
+  background-color: #5e0101;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-end;
   padding: 30px;
-  border-radius: 12px;
-  margin: 10px auto;
+  border-radius: 3%;
   width: 100%;
   max-width: 600px;
   gap: 20px;
 }
-
-input[type="text"],
-input[type="file"] {
-  padding: 12px 20px;
+textarea#desc {
+  width: 85%;        
+  height: 70px;       
+  padding: 12px;
+  font-size: 14px;
   border-radius: 10px;
+  border: none;
+  resize: none;
+}
+
+input[type="text"] {
+  padding: 12px 20px;
+  border-radius: 4px;
   border: none;
   outline: none;
   width: 220px;
@@ -208,30 +220,39 @@ input[type="file"] {
 }
 
 button {
-  background: linear-gradient(to right, #ffffff, #ad0202);
-  color: #860202;
-  border: solid rgb(255, 255, 255);
+  background: linear-gradient(to right, #ffffff, #ffffff);
+  color: #4b0000;
   font-family: Georgia, 'Times New Roman', Times, serif;
   padding: 12px 98px;
-  border: none;
   cursor: pointer;
-  font-size: 16px;
-  border-radius: 5px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
   font-weight: bold;
-  box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+  box-shadow: 2px 2px 5px rgb(355, 355, 355);
   transition: transform 0.2s ease;
 }
-
 button:hover {
   transform: scale(1.05);
+  color: #310000;
 }
+textarea#desc {
+  width: 85%;        
+  height: 70px;       
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: none;
+  resize: none;         
+}
+
 
 #mensaje {
   width: 100%;
   text-align: center;
   margin-top: 0px;
   font-size: 60px;
-  color: #ffffff;
+  color: rgb(255, 255, 255);
 }
 
 input[type="file"] {
@@ -239,7 +260,7 @@ input[type="file"] {
 }
 
 .label-file {
-  background: linear-gradient(to right, #ffbcbc, #ffffff);
+  background: linear-gradient(to right, #ffffff, #ffffff);
   color: rgb(91, 0, 0);
   font-family: Georgia, 'Times New Roman', Times, serif;
   padding: 13px 26px;
@@ -288,7 +309,7 @@ input[type="file"] {
   position: fixed;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  background: #fff;
+  background: #ffffff;
   padding: 20px 30px;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,0,0,0.3);
@@ -321,3 +342,143 @@ input[type="file"] {
 #cerrarModal:hover {
   background-color: #0056b3;
 }
+
+
+#listaReserva{ /* ventana de ver reserva*/
+  background-color: #ffffff; 
+  color: #380303;
+  
+  
+
+}
+.btn-ver {
+  background: linear-gradient(to right, #4b0000, hsl(0, 98%, 26%));
+  color: #ffffff;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  padding: 10px 35px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, background-color 0.3s;
+}
+
+.btn-ver:hover {
+  background-color: #ffeaea;
+  transform: scale(1.05);
+}
+
+
+/* boton modificar */
+.btn-modificar {
+  background: linear-gradient(to right, #4b0000, hsl(0, 98%, 26%));
+  color: #ffffff;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  padding: 10px 35px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, background-color 0.3s;
+}
+
+.btn-modificar:hover {
+  background-color: #ffffff;
+  transform: scale(1.05);
+}
+
+
+/* ver reserva*/
+.btn-verreserva {
+  background: linear-gradient(to right, #4b0000, hsl(0, 98%, 26%));
+  color: #ffffff;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  padding: 10px 35px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, background-color 0.3s;
+}
+
+.btn-verreserva:hover {
+  background-color: #ffeaea;
+  transform: scale(1.05);
+}
+
+/*boton eliminar*/
+.btn-eliminar {
+  background: linear-gradient(to right, #4b0000, hsl(0, 98%, 26%));
+  color: #ffffff;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  padding: 10px 35px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, background-color 0.3s;
+}
+
+.btn-eliminar:hover {
+  
+  transform: scale(1.05);
+}
+
+
+/*boton cerrar*/
+.btn-cerrar {
+  background: linear-gradient(to right, #b22222, #8b0000);
+  color: white;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(139, 0, 0, 0.7);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+
+/*modificar y cerra*/
+.btn-guardar {
+  background: linear-gradient(to right, #b22222, #680101);
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-guardar:hover {
+  background-color: #ffffff;
+  color: white;
+}
+
+.btn-cerrar {
+  background: linear-gradient(to right, #b22222, #5e0101);
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.btn-cerrar:hover {
+  background-color: #ffffff;
+  color: white;
+  
+}
+

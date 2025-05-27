@@ -52,12 +52,26 @@ formEntrar.addEventListener('submit', async function (e){
 	console.log(passUsuario);
 	try {
 		const res = await fetch(`http://localhost:9003/usuarios/emailypass/${correoUsuario}/${passUsuario}`);
-		const data = res.json();
+		const data = await res.json();
 		console.log(data);
+		console.log(data.length);
+		if(data.length == 1){
+			console.log("Email y contraseña correcta");
+			window.location.href = 'principal.html';
+		}else{
+			console.log("Email o contraseña incorrecta");
+
+			const ulError = document.createElement('ul');
+			ulError.textContent = "Error, email o contraseña incorrecta";
+
+			formEntrar.appendChild(ulError);
+
+            formEntrar.reset();
+		}
 		
 	} catch (Error) {
 		console.log ('error en formulario entrar');
 		
 	}
 
-})
+});

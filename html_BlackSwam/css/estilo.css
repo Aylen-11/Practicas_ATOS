@@ -310,3 +310,11 @@ input, select {
     border-radius: 3px;
     background: linear-gradient(45deg, #f49f9f, #3f0101);
 }
+
+#formEntrar ul {
+    margin-top: 20px;
+    color: #792929;
+    font-family: 'Prata', serif;
+    font-size: 20px;
+
+}

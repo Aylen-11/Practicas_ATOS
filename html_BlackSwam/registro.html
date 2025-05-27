@@ -17,7 +17,7 @@
             <li><a href="formulario.html">Iniciar Sesión</a></li>
             <li>
               <a href="https://www.instagram.com/black_swam1128?igsh=MzVkdGJlc2poN3I2" target="_blank">
-                <img src="/html_BlackSwam/imagenes/iconoinsta.png" alt="Instagram" class="icono-instagram">
+                <img src="imagenes/iconoinsta.png" alt="Instagram" class="icono-instagram">
               </a> 
             </li>
           </ul>
@@ -26,13 +26,13 @@
       
       <!--agregar evento-->
     <div id="contenedor_formulario">
-      <h1 class="h1">Agregar evento</h1>
+    
 
 
     
   <form id="formulario">
+    <h1 class="h1">Agregar evento</h1><br>
     <input type="text" name="nombre" placeholder="Nombre evento" id="nombre" required>
-    <input type="text" name="descripcion" placeholder="Descripcion" id="desc" required>
     <input type="text" name="fechaInicio" placeholder="Fecha inicio del evento" id="feIn" required>
     <input type="text" name="duracion" placeholder="Duracion" id="dura" required>
     <input type="text" name="unidadDuracion" placeholder="Unidad duracion" id="uniDura" required>
@@ -42,6 +42,8 @@
     <input type="text" name="destacado" placeholder="Destacado" id="dest" required>
     <input type="text" name="precio" placeholder="Precio" id="prec" required>
     <input type="text" name="tipo" placeholder="Tipo del 1 al 5" id="tip" required>
+    <textarea name="descripcion" id="desc" placeholder="Descripción" rows="4" cols="50" required></textarea>
+
 
     <button type="submit">Agregar</button>
     
@@ -60,9 +62,7 @@
             <th>Estado</th>
             <th>Precio</th>
             <th>Aforo</th>
-            <th> </th>
-            <th> </th>
-            <th> </th>
+         
           </tr>
         </thead>
         <tbody id="tabla_cuerpo"></tbody>
@@ -81,6 +81,8 @@
       
       <div id="contenedorReserva">
         <ul id="listaReserva"></ul>
+
+
       </div>
 
     </div>
