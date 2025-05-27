@@ -41,3 +41,23 @@ formRegistro.addEventListener('submit', async function(e){
 		console.log("Error en formulario")
 	}
 });
+
+//iniciar sesión
+formEntrar.addEventListener('submit', async function (e){
+	e.preventDefault();
+
+	const correoUsuario = document.getElementById('emailE').value;
+	const passUsuario = document.getElementById('passwordE').value;
+	console.log(correoUsuario);
+	console.log(passUsuario);
+	try {
+		const res = await fetch(`http://localhost:9003/usuarios/emailypass/${correoUsuario}/${passUsuario}`);
+		const data = res.json();
+		console.log(data);
+		
+	} catch (Error) {
+		console.log ('error en formulario entrar');
+		
+	}
+
+})
