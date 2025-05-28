@@ -232,6 +232,9 @@ button {
   font-weight: bold;
   box-shadow: 2px 2px 5px rgb(355, 355, 355);
   transition: transform 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 button:hover {
   transform: scale(1.05);
@@ -467,7 +470,7 @@ input[type="file"] {
 }
 
 .btn-cerrar {
-  background: linear-gradient(to right, #b22222, #5e0101);
+  background: linear-gradient(to right, #ffffff, #5e0101);
   color: white;
   padding: 8px 16px;
   border: none;
@@ -482,4 +485,70 @@ input[type="file"] {
   color: white;
   
 }
+
+/*VENATANA EMERGENTE DE VER*/
+
+/* Fondo del modal */
+#contenedorVer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(196, 196, 196, 0.548); 
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Ventana emergente */
+#listaVer {
+  background-color: #ffffff; 
+  border: 2px solid #460101;
+  font-size: 20px;
+  font-family: 'Prata', serif;
+  width: 900px;
+  max-width: 400px;
+  padding: 14px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  animation: aparecer 0.3s ease;
+  color: #460101;
+}
+
+/* Botón dentro del modal */
+#listaVer button {
+  margin-top: 15px;
+  background-color: #910606;
+  color: rgb(43, 0, 0);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+#listaVer button:hover {
+  background-color: #fefeff;
+}
+
+/* Animación de entrada */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* vetana emergente de ver todas la reservas*/
+
+
+
+
 

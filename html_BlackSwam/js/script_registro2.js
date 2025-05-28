@@ -39,62 +39,65 @@ async function getEventos() {
             //botones
 
             //boton ver
-            const tdVer = document.createElement('td');
-            const btnVer = document.createElement('button');
-            btnVer.textContent = 'Ver';
-            btnVer.classList.add('btn-ver');
-            tdVer.appendChild(btnVer);
-            tr.appendChild(tdVer); 
+           // Botón ver
+           const tdVer = document.createElement('td');
+           const btnVer = document.createElement('button');
+           btnVer.textContent = 'Ver';
+           btnVer.classList.add('btn-ver');
+           tdVer.appendChild(btnVer);
+           tr.appendChild(tdVer);
 
-            btnVer.addEventListener('click', async () => {
+           btnVer.addEventListener('click', async () => {
+               try {
+                   const res = await fetch(`http://localhost:9003/eventos/uno/${e.idEvento}`);
+                   const ver = await res.json();
+                   console.log(ver);
 
-                try {
-                    const res = await fetch(`http://localhost:9003/eventos/uno/${e.idEvento}`);
-                    const ver = await res.json();
-                    console.log(ver);
+                   const listaVer = document.getElementById('listaVer');
+                   listaVer.innerHTML = '';
 
-                    const listaVer = document.getElementById('listaVer');
-                    listaVer.innerHTML = '';
+                   const ulDescripcion = document.createElement('ul');
+                   ulDescripcion.textContent = `Descripcion: ${ver.descripcion}`;
 
-                    const ulDescripcion = document.createElement('ul');
-                    ulDescripcion.textContent = `Descripcion: ${ver.descripcion}`;
+                   const ulFechaInicio = document.createElement('ul');
+                   ulFechaInicio.textContent = `Fecha inicio: ${ver.fechaInicio}`;
 
-                    const ulFechaInicio = document.createElement('ul');
-                    ulFechaInicio.textContent = `Fecha inicio: ${ver.fechaInicio}`;
+                   const ulFechaAlta = document.createElement('ul');
+                   ulFechaAlta.textContent = `Fecha alta: ${ver.fechaAlta}`;
 
-                    const ulFechaAlta = document.createElement('ul');
-                    ulFechaAlta.textContent = `Fecha alta: ${ver.fechaAlta}`;
+                   const ulDireccion = document.createElement('ul');
+                   ulDireccion.textContent = `Direccion: ${ver.direccion}`;
 
-                    const ulDireccion = document.createElement('ul');
-                    ulDireccion.textContent = `Direccion: ${ver.direccion}`;
+                   const ulDuracion = document.createElement('ul');
+                   ulDuracion.textContent = `Duracion: ${ver.duracion}`;
 
-                    const ulDuracion = document.createElement('ul');
-                    ulDuracion.textContent = `Duracion: ${ver.duracion}`;
+                   const ulUnidadDuracion = document.createElement('ul');
+                   ulUnidadDuracion.textContent = `Unidad duracion: ${ver.unidadDuracion}`;
 
-                    const ulUnidadDuracion = document.createElement('ul');
-                    ulUnidadDuracion.textContent = `Unidad duracion: ${ver.unidadDuracion}`;
+                   const botonCerrar = document.createElement('button');
+                   botonCerrar.type = 'button';
+                   botonCerrar.textContent = 'Cerrar';
+                   botonCerrar.classList.add('boton-cerrar');
+                   botonCerrar.addEventListener('click', () => {
+                       listaVer.innerHTML = '';
+                       document.getElementById('contenedorVer').style.display = 'none'; 
+                   });
 
-                    const botonCerrar = document.createElement('button');
-                    botonCerrar.type = 'button';
-                    botonCerrar.textContent = 'Cerrar';
-                    botonCerrar.addEventListener('click', () => {
-                        listaVer.innerHTML = '';
-                    });
+                   listaVer.appendChild(ulDescripcion);
+                   listaVer.appendChild(ulFechaInicio);
+                   listaVer.appendChild(ulFechaAlta);
+                   listaVer.appendChild(ulDireccion);
+                   listaVer.appendChild(ulDuracion);
+                   listaVer.appendChild(ulUnidadDuracion);
+                   listaVer.appendChild(botonCerrar);
 
-                    listaVer.appendChild(ulDescripcion);
-                    listaVer.appendChild(ulFechaInicio);
-                    listaVer.appendChild(ulFechaAlta);
-                    listaVer.appendChild(ulDireccion);
-                    listaVer.appendChild(ulDuracion);
-                    listaVer.appendChild(ulUnidadDuracion);
-                    listaVer.appendChild(botonCerrar);
+                   // Mostrar el modal
+                   document.getElementById('contenedorVer').style.display = 'flex';
 
-
-                } catch (error) {
-                    console.log("Error boton ver")
-                }
-            });
-
+               } catch (error) {
+                   console.log("Error boton ver", error);
+               }
+           });
 
             //boton modificar 
 
@@ -113,7 +116,7 @@ async function getEventos() {
 
                     const formu = document.getElementById('formularioModificar');
                     formu.innerHTML = '';
-                    
+
                     const inputNombre = document.createElement('input');
                     inputNombre.value = data.nombre;
 
