@@ -92,7 +92,7 @@ nav ul li a:hover {
   top: 0;
   left: 0;
   display: flex;
-  justify-content: center;
+  justify-content:center;
   transition: 0.5s ease-in-out;
 }
 
@@ -182,8 +182,8 @@ nav ul li a:hover {
 }
 
 .viewRightInformation {
-    color: #000000;
-    background:#fdf5f5;
+    color: #ffffff;
+    background:#3c0000;
     font-family: 'Prata', serif;
     padding: 54px;
     border-radius: 10px;
@@ -217,7 +217,167 @@ nav ul li a:hover {
     padding-right: 10px;
 }
 .h1logo {
-  font-size: 80px; /* Puedes ajustar a 100px, 120px, etc. */
+  font-size: 80px; 
   font-weight: bold;
-  text-align: center; /* Opcional: lo centra horizontalmente */
+  text-align: center; 
+}
+
+.sobrenosotros {
+  display: flex;
+  justify-content: center;
+  width: 96%;
+  height: 90px;
+  color: white;
+  font-size: 18px;
+  font-family: 'Prata', serif; 
+  padding: 2%;
+
+  background: linear-gradient(
+    90deg,
+    lch(5.46% 24.59 20.54) 0%, 
+    lch(17.86% 47.9 35.13) 50%,
+    lch(4.86% 21.39 19.78) 100%
+  );
+  
+  background-size: 200% 100%;
+  animation: olaMovimiento 3s linear infinite alternate;
+}
+
+@keyframes olaMovimiento {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+::-webkit-scrollbar {
+    width: 10px;
+    height: 20px;
+}
+
+::-webkit-scrollbar-track {
+    border: 8px solid var(--hard-purple);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: linear-gradient(45deg, #f49f9f, #3f0101);
+}
+
+
+/*tarjetas carrusel*/
+.flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 450px;
+    perspective: 1000px;
+    margin-right: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    border-radius: 15px;
+}
+
+.flip-card-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.flip-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.flip-card-back {
+    background-color: #3c0000;
+    color: white;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Prata', serif;
+    padding: 20px;
+}
+
+/* Botones en la parte trasera */
+.back-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.btn-regresar, .btn-reservar {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    min-width: 100px;
+}
+
+/* Botón Regresar */
+.btn-regresar {
+    background-color: #fff;
+    color: #3c0000;
+}
+
+.btn-regresar:hover {
+    background-color: #ddd;
+}
+
+/* Botón Reservar */
+.btn-reservar {
+    background-color: #800000;
+    color: white;
+}
+
+.btn-reservar:hover {
+    background-color: #a00000;
+}
+
+/* Botón transparente para girar al frente */
+.btn-transparente {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid white;
+    color: white;
+    font-weight: bold;
+    backdrop-filter: blur(4px);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.btn-transparente:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateX(-50%) scale(1.05);
 }

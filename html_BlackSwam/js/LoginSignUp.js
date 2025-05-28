@@ -34,9 +34,24 @@ formRegistro.addEventListener('submit', async function(e){
             },
             body: JSON.stringify(nuevoUsuario)
 		});
+
+		console.log("cliente añadido");
+
+		console.log("añadiendo nombre cliente a la pagina principal...")
+
+		const buscarCliente = await fetch(`http://localhost:9003/usuarios/emailpornombre/${nuevoUsuario.email}`);
+		const dataCliente = await buscarCliente.json();
+
+		const nombreCliente = dataCliente[0].nombre;
+        console.log("Nombre:", nombreCliente);
+
+		
+
+		localStorage.setItem("nombreCliente", nombreCliente);
+				
 		
 		//formRegistro.reset();
-		window.location.href = 'principal.html';
+		window.location.href = 'principalClientes.html';
 	} catch (error) {
 		console.log("Error en formulario")
 	}
@@ -57,7 +72,21 @@ formEntrar.addEventListener('submit', async function (e){
 		console.log(data.length);
 		if(data.length == 1){
 			console.log("Email y contraseña correcta");
-			window.location.href = 'principal.html';
+			
+			const buscarCliente = await fetch(`http://localhost:9003/usuarios/emailpornombre/${correoUsuario}`);
+			const dataCliente = await buscarCliente.json();
+
+			const nombreCliente = dataCliente[0].nombre;
+            console.log("Nombre:", nombreCliente);
+
+			const idUsuario =dataCliente[0].idUsuario;
+			console.log("ID usuario: " + idUsuario);
+
+			localStorage.setItem("nombreCliente", nombreCliente);
+			localStorage.setItem("idUsuario", idUsuario);
+				
+			window.location.href = 'principalClientes.html';
+
 		}else{
 			console.log("Email o contraseña incorrecta");
 

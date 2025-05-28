@@ -1,34 +1,58 @@
-function App() {}
-
-    window.onload = function(event){
-        var app = new App();
-        window.app = app;
-    }
-
-    App.prototype.processingButton = function(event){
-        const btn = event.currentTarget;
-        const carruselList = event.currentTarget.parentNode;
-        const track = event.currentTarget.parentNode.querySelector('#track');
-        const carrusel = track.querySelectorAll('.carrusel');
-        
-        const carruselWidth = carrusel[0].offsetWidth;
-        
-        const trackWidth = track.offsetWidth;
-        const listWidth = carruselList.offsetWidth;
-
-        track.style.left == "" ? leftPosition = track.style.left = 0 : leftPosition = parseFloat(track.style.left.slice(0,-2) * -1);
-
-        btn.dataset.button == "button-prev" ? prevAction(leftPosition, carruselWidth, track) : nextAction(leftPosition, trackWidth, listWidth, carruselWidth, track);
-    }  
-    
-    let prevAction = (leftPosition, carruselWidth, track) =>{
-        if(leftPosition > 0){
-            track.style.left = `${-1 * (leftPosition - carruselWidth)}px`;
+const app = {
+    slideIndex: 0,
+    slideWidth: 300,
+    totalSlides: 0,
+    track: null,
+  
+    init() {
+      this.track = document.getElementById("track");
+      this.totalSlides = this.track.children.length;
+      this.updatePosition();
+  
+      // Evento para girar las tarjetas (botón "Ver más")
+      document.querySelectorAll(".btn-transparente").forEach(btn => {
+        btn.addEventListener("click", e => {
+          const cardInner = e.target.closest('.flip-card').querySelector('.flip-card-inner');
+          cardInner.classList.toggle("flipped");
+        });
+      });
+  
+      // Evento para regresar al frente (botón "Regresar")
+      document.querySelectorAll(".btn-regresar").forEach(btn => {
+        btn.addEventListener("click", e => {
+          const cardInner = e.target.closest('.flip-card').querySelector('.flip-card-inner');
+          cardInner.classList.remove("flipped");
+        });
+      });
+  
+      // Eventos para botones prev y next del carrusel
+      document.querySelectorAll('[data-button="button-prev"], [data-button="button-next"]').forEach(btn => {
+        btn.addEventListener("click", (e) => this.processingButton(e));
+      });
+    },
+  
+    updatePosition() {
+      const position = -this.slideIndex * this.slideWidth;
+      this.track.style.transform = `translateX(${position}px)`;
+    },
+  
+    processingButton(event) {
+      const button = event.currentTarget;
+      if (button.dataset.button === "button-next") {
+        this.slideIndex++;
+        if (this.slideIndex > this.totalSlides - 3) {
+          this.slideIndex = 0;
         }
-    }
-
-    let nextAction = (leftPosition, trackWidth, listWidth, carruselWidth, track)=>{
-        if(leftPosition < (trackWidth-listWidth)){     
-            track.style.left = `${-1 * (leftPosition + carruselWidth)}px`;
+      } else if (button.dataset.button === "button-prev") {
+        this.slideIndex--;
+        if (this.slideIndex < 0) {
+          this.slideIndex = this.totalSlides - 3;
         }
+      }
+      this.updatePosition();
     }
+  };
+  
+  window.onload = () => {
+    app.init();
+  };

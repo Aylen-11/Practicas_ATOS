@@ -1,3 +1,18 @@
+//nombre cliente
+window.addEventListener("DOMContentLoaded", () => {
+    const nombre = localStorage.getItem("nombreCliente");
+    
+    if (nombre) {
+        document.getElementById("nombreCliente").textContent = nombre;
+        
+    } else {
+        document.getElementById("nombreCliente").textContent = "cliente";
+    }
+});
+
+const idCliente = localStorage.getItem("idUsuario");
+console.log("ID de cliente/usuario: " + idCliente);
+
 const form1 = document.getElementById('formulario');
 const tablaCuerpo = document.getElementById('tabla_cuerpo');
 
@@ -6,7 +21,7 @@ async function getEventos() {
     const tablaCuerpo = document.getElementById('tabla_cuerpo'); //llamamos a la tabla
 
     try {
-        const res = await fetch('http://localhost:9003/eventos/todos'); //conecta con la base de datos
+        const res = await fetch(`http://localhost:9003/reservas/usuario/${idCliente}`); //conecta con la base de datos
         const data = await res.json(); //convierte los datos a json
         console.log(data); //muestra el array en la consola
 
@@ -41,7 +56,7 @@ async function getEventos() {
             //boton ver
             const tdVer = document.createElement('td');
             const btnVer = document.createElement('button');
-            btnVer.textContent = 'Ver';
+            btnVer.textContent = 'Ver detalles';
             btnVer.classList.add('btn-ver');
             tdVer.appendChild(btnVer);
             tr.appendChild(tdVer); 
@@ -211,80 +226,12 @@ async function getEventos() {
 
             });
 
-            //boton ver reserva 
-
-            const tdVerReserva = document.createElement('td');
-            const botonVerReserva = document.createElement('button');
-            botonVerReserva.textContent = 'Ver reserva';
-            botonVerReserva.classList.add('btn-verreserva');
-            tdVerReserva.appendChild(botonVerReserva);
-            tr.appendChild(tdVerReserva);
-
-            botonVerReserva.addEventListener('click', async () => {
-                try {
-                    const resReservas = await fetch(`http://localhost:9003/reservas/evento/${e.idEvento}`);
-                    const reservas = await resReservas.json();
-
-                    if (reservas && reservas.length > 0) {
-                        const listaReserva = document.getElementById('listaReserva');
-                        listaReserva.innerHTML = '';
-
-                        reservas.forEach(reserva => {
-                            const ulIdReserva = document.createElement('ul');
-                            ulIdReserva.textContent = `ID Reserva: ${reserva.idReserva}`;
-
-                            const ulEmail = document.createElement('ul');
-                            ulEmail.textContent = `Email: ${reserva.email}`;
-
-                            const ulNombreCliente = document.createElement('ul');
-                            ulNombreCliente.textContent = `Cliente: ${reserva.nombre} ${reserva.apellidos}`;
-
-                            const ulAforoMaximo = document.createElement('ul');
-                            ulAforoMaximo.textContent = `Aforo: ${reserva.aforoMaximo}`;
-
-                            const ulPrecioEvento = document.createElement('ul');
-                            ulPrecioEvento.textContent = `Precio Evento: ${reserva.precioEvento}`;
-
-                            const ulCantidad = document.createElement('ul');
-                            ulCantidad.textContent = `Cantidad: ${reserva.cantidad}`;
-
-                            const ulPrecioVenta = document.createElement('ul');
-                            ulPrecioVenta.textContent = `Precio Venta: ${reserva.precioVenta}`;
-
-                            const botonCerrar = document.createElement('button');
-                            botonCerrar.type = 'button';
-                            botonCerrar.textContent = 'Cerrar';
-                            botonCerrar.classList.add('btn-cerrar');
-                            botonCerrar.addEventListener('click', () => {
-                                listaReserva.innerHTML = '';
-                            });
-
-                            listaReserva.appendChild(ulIdReserva);
-                            listaReserva.appendChild(ulEmail);
-                            listaReserva.appendChild(ulNombreCliente);
-                            listaReserva.appendChild(ulAforoMaximo);
-                            listaReserva.appendChild(ulPrecioEvento);
-                            listaReserva.appendChild(ulCantidad);
-                            listaReserva.appendChild(ulPrecioVenta);
-                            listaReserva.appendChild(botonCerrar);
-                        });
-                    } else {
-                        // Si no hay reservas
-                        const listaReserva = document.getElementById('listaReserva');
-                        listaReserva.innerHTML = '<li>No hay reservas para este evento.</li>';
-                    }
-
-
-                } catch (error) {
-                    console.log("Error boton ver reserva")
-                }
-            })
 
             //boton eliminar
 
             const tdEliminar = document.createElement('td');
             const btnEliminar = document.createElement('button');
-            btnEliminar.textContent = 'Eliminar';
+            btnEliminar.textContent = 'Cancelar';
             btnEliminar.classList.add('btn-eliminar');
             tdEliminar.appendChild(btnEliminar);
             tr.appendChild(tdEliminar);
@@ -316,51 +263,6 @@ async function getEventos() {
         console.log("error eliminar");
     }
 }
-//formulario para añadir cosas
-form1.addEventListener('submit', async function (e) {
-    e.preventDefault();
-
-    const nuevoEvento = {
-        nombre: document.getElementById("nombre").value,
-        descripcion: document.getElementById("desc").value,
-        fechaInicio: document.getElementById("feIn").value,
-        duracion: parseInt(document.getElementById("dura").value),
-        unidadDuracion: document.getElementById("uniDura").value,
-        direccion: document.getElementById("direc").value,
-        aforoMaximo: parseInt(document.getElementById("afMax").value),
-        estado: 'ACTIVO',
-        destacado: 'N',
-        precio: parseInt(document.getElementById("prec").value),
-        tipo: { idTipo: parseInt(document.getElementById("tip").value) },
-        fechaAlta: new Date().toISOString().split('T')[0],
-
-    }
-
-    try {
-        console.log(nuevoEvento);
-        const res = await fetch('http://localhost:9003/eventos/alta', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(nuevoEvento)
-        });
-        console.log("Respuesta:", res.status, res.statusText);
-
-        if (!res.ok) {
-            const errorData = await res.text(); // Intenta ver el cuerpo del error
-            console.error("Error en respuesta:", errorData);
-            return;
-        }
-        await getEventos();
-        form1.reset();
-
-    } catch (error) {
-        console.log("error al añadir evento")
-    }
-
-
-});
 
 
 getEventos(); //se renderiza los datos pero en la consola

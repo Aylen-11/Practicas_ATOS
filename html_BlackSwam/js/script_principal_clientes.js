@@ -20,3 +20,14 @@ function moverCarrusel(direccion) {
 
 mostrarImagen(indiceActual);
 
+//nombre cliente
+window.addEventListener("DOMContentLoaded", () => {
+    const nombre = localStorage.getItem("nombreCliente");
+    if (nombre) {
+        document.getElementById("nombreCliente").textContent = nombre;
+    } else {
+        document.getElementById("nombreCliente").textContent = "cliente";
+    }
+});
+
+  
