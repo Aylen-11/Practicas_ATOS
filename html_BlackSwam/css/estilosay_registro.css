@@ -8,7 +8,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 200px;
+  /*margin-top: 200px;*/
 }
 
 
@@ -455,7 +455,7 @@ input[type="file"] {
 
 /*modificar y cerra*/
 .btn-guardar {
-  background: linear-gradient(to right, #b22222, #680101);
+  background: linear-gradient(to right, #d60a0a, #680101);
   color: white;
   padding: 8px 16px;
   border: none;
@@ -469,22 +469,6 @@ input[type="file"] {
   color: white;
 }
 
-.btn-cerrar {
-  background: linear-gradient(to right, #ffffff, #5e0101);
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  margin-left: 10px;
-}
-
-.btn-cerrar:hover {
-  background-color: #ffffff;
-  color: white;
-  
-}
 
 /*VENATANA EMERGENTE DE VER*/
 
@@ -548,7 +532,61 @@ input[type="file"] {
 
 /* vetana emergente de ver todas la reservas*/
 
+/* Fondo del modal */
+#contenedorReseserva {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(196, 196, 196, 0.548); 
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Ventana emergente */
+#listaReserva {
+  background-color: #ffffff; 
+  border: 2px solid #460101;
+  font-size: 20px;
+  font-family: 'Prata', serif;
+  width: 900px;
+  max-width: 400px;
+  padding: 14px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  animation: aparecer 0.3s ease;
+  color: #460101;
+}
 
 
 
+/* Animación de entrada */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.btn-cerrar {
+  background: linear-gradient(to right, #460000, #5e0101);
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 10px;
+}
 
+.btn-cerrar:hover {
+  background-color: #ffffff;
+  color: white;
+  
+}

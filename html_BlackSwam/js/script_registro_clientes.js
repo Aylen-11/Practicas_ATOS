@@ -135,45 +135,14 @@ async function getEventos() {
 
             btnModificar.addEventListener('click', async () => {
                 try {
-                    const res = await fetch(`http://localhost:9003/reservas/usuario/${idCliente}`)
-                    const data = await res.json();
-                    console.log(data);
+                    const idReserva = e.idReserva; // guardamos el id correcto aquí
+
 
                     const formu = document.getElementById('formularioModificar');
-                    formu.innerHTML = '';
-                    
-                    const inputNombre = document.createElement('input');
-                    inputNombre.value = data.nombre;
+                    formu.innerHTML = ''; // Limpiar por si acaso
 
-                    const inputDescripcion = document.createElement('input');
-                    inputDescripcion.value = data.descripcion;
-
-                    const inputFechaInicio = document.createElement('input');
-                    inputFechaInicio.value = data.fechaInicio;
-
-                    const inputDuracion = document.createElement('input');
-                    inputDuracion.value = data.duracion;
-
-                    const inputUnidadDuracion = document.createElement('input');
-                    inputUnidadDuracion.value = data.unidadDuracion;
-
-                    const inputDireccion = document.createElement('input');
-                    inputDireccion.value = data.direccion;
-
-                    const inputAforo = document.createElement('input');
-                    inputAforo.value = data.aforoMaximo;
-
-                    const inputEstado = document.createElement('input');
-                    inputEstado.value = data.estado;
-
-                    const inputDestacado = document.createElement('input');
-                    inputDestacado.value = data.destacado;
-
-                    const inputPrecio = document.createElement('input');
-                    inputPrecio.value = data.precio;
-
-                    const inputTipo = document.createElement('input');
-                    inputTipo.value = data.tipo.idTipo;
+                    const inputCantidad = document.createElement('input');
+                    inputCantidad.value = e.cantidad;
 
                     const botonGuardar = document.createElement('button');
                     botonGuardar.type = 'submit';
@@ -189,43 +158,20 @@ async function getEventos() {
                         document.getElementById('formularioModificar').innerHTML = '';
                     });
 
-
-                    formu.appendChild(inputNombre);
-                    formu.appendChild(inputDescripcion);
-                    formu.appendChild(inputFechaInicio);
-                    formu.appendChild(inputDuracion);
-                    formu.appendChild(inputUnidadDuracion);
-                    formu.appendChild(inputDireccion);
-                    formu.appendChild(inputAforo);
-                    formu.appendChild(inputEstado);
-                    formu.appendChild(inputDestacado);
-                    formu.appendChild(inputPrecio);
-                    formu.appendChild(inputTipo);
+                    formu.appendChild(inputCantidad)
                     formu.appendChild(botonGuardar);
                     formu.appendChild(botonCerrar);
 
-                    formu.addEventListener('submit', async (e) => {
-                        e.preventDefault();
+                    formu.addEventListener('submit', async (event) => {
+                        event.preventDefault();
 
-                        const nuevoEvento2 = {
-                            nombre: inputNombre.value,
-                            descripcion: inputDescripcion.value,
-                            fechaInicio: inputFechaInicio.value,
-                            duracion: parseInt(inputDuracion.value),
-                            unidadDuracion: inputUnidadDuracion.value,
-                            direccion: inputDireccion.value,
-                            aforoMaximo: parseInt(inputAforo.value),
-                            estado: inputEstado.value,
-                            destacado: inputDestacado.value,
-                            precio: parseInt(inputPrecio.value),
-                            tipo: { idTipo: parseInt(inputTipo.value) },
-                        };
-                        console.log(data.idEvento);
+                        const nuevaCantidad = parseInt(inputCantidad.value);
+                        console.log("CANTIDAD NUEVAAAA " +nuevaCantidad);
 
-                        await fetch(`http://localhost:9003/eventos/modificar/${data.idEvento}`, {
+                        await fetch(`http://localhost:9003/reservas/modificar/${idReserva}/${nuevaCantidad}`, {
                             method: 'PUT',
                             headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(nuevoEvento2)
+                            body: JSON.stringify({ cantidad: nuevaCantidad })
 
                         });
 
@@ -234,7 +180,7 @@ async function getEventos() {
                     });
 
                 } catch (error) {
-                    console.log("error formu2")
+                    console.log("error en modificar")
                 }
 
             });

@@ -220,6 +220,7 @@ async function getEventos() {
             const botonVerReserva = document.createElement('button');
             botonVerReserva.textContent = 'Ver reserva';
             botonVerReserva.classList.add('btn-verreserva');
+            
             tdVerReserva.appendChild(botonVerReserva);
             tr.appendChild(tdVerReserva);
 
@@ -229,16 +230,16 @@ async function getEventos() {
                     const reservas = await resReservas.json();
 
                     if (reservas && reservas.length > 0) {
-                        const listaReserva = document.getElementById('listaReserva');
+                       const listaReserva = document.getElementById('listaReserva');
                         listaReserva.innerHTML = '';
 
                         reservas.forEach(reserva => {
                             const ulIdReserva = document.createElement('ul');
                             ulIdReserva.textContent = `ID Reserva: ${reserva.idReserva}`;
 
-                            const ulEmail = document.createElement('ul');
+                            const ulEmail = document.createElement('ul'); 
                             ulEmail.textContent = `Email: ${reserva.email}`;
-
+ 
                             const ulNombreCliente = document.createElement('ul');
                             ulNombreCliente.textContent = `Cliente: ${reserva.nombre} ${reserva.apellidos}`;
 
@@ -276,6 +277,7 @@ async function getEventos() {
                         const listaReserva = document.getElementById('listaReserva');
                         listaReserva.innerHTML = '<li>No hay reservas para este evento.</li>';
                     }
+                    document.getElementById('contenedorReserva').style.display = 'flex';
 
 
                 } catch (error) {

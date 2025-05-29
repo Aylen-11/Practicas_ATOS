@@ -49,4 +49,14 @@ INSERT INTO RESERVAS (ID_RESERVA, ID_USUARIO, ID_EVENTO, PRECIO_VENTA, OBSERVACI
 (2, 2, 2, 230, 'Asistencia confirmada', 1),
 (3, 3, 3, 350, 'Reserva familiar', 4),
 (4, 4, 4, 600, 'Cancelada por el cliente', 1),
-(5, 3, 11, 280, 'Reserva para boda en la finca', 3);
+(5, 3, 11, 280, 'Reserva para boda en la finca', 3),
+(6, 3, 5, 800, 'Despedida confirmada', 2),
+(7, 3, 6, 190, 'Celebración jardín', 1),
+(8, 2, 7, 100, 'Primera comunión', 3),
+(9, 1, 8, 450, 'Asistencia de profesores', 2),
+(10, 4, 9, 130, 'Niños confirmados', 1),
+(11, 2, 10, 320, 'Reserva empresa', 2),
+(12, 1, 2, 230, 'Repetida por aniversario', 1),
+(13, 4, 3, 350, 'Evento familiar', 2),
+(14, 1, 6, 190, 'Celebración doble', 2),
+(15, 2, 1, 170, 'Reserva para boda amiga', 1);
