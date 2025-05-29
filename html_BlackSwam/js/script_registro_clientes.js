@@ -23,7 +23,7 @@ async function getEventos() {
     try {
         const res = await fetch(`http://localhost:9003/reservas/usuario/${idCliente}`); //conecta con la base de datos
         const data = await res.json(); //convierte los datos a json
-        console.log(data); //muestra el array en la consola
+        console.log("reservas/usuario/idCliente: " + JSON.stringify(data)); //muestra el array en la consola
 
         tablaCuerpo.innerHTML = ''; //limpiar lista
         //if (data )
@@ -31,25 +31,26 @@ async function getEventos() {
             const tr = document.createElement('tr'); //crea la row
 
             //creacion de bloques
-            const tdId = document.createElement('td');
-            tdId.textContent = e.idEvento;
-            tr.appendChild(tdId);
 
-            const tdNombre = document.createElement('td');
-            tdNombre.textContent = e.nombre;
-            tr.appendChild(tdNombre);
+            const tdNombreEvento = document.createElement('td');
+            tdNombreEvento.textContent = e.evento.nombre;
+            tr.appendChild(tdNombreEvento);
+
+            const tdTipoEvento = document.createElement('td');
+            tdTipoEvento.textContent = e.evento.tipo.nombre;
+            tr.appendChild(tdTipoEvento);
 
             const tdEstado = document.createElement('td');
-            tdEstado.textContent = e.estado;
+            tdEstado.textContent = e.evento.estado;
             tr.appendChild(tdEstado);
 
-            const tdPrecio = document.createElement('td');
-            tdPrecio.textContent = e.precio;
+            const tdPrecio= document.createElement('td');
+            tdPrecio.textContent = e.evento.precio;
             tr.appendChild(tdPrecio);
 
-            const tdAforo = document.createElement('td');
-            tdAforo.textContent = e.aforoMaximo;
-            tr.appendChild(tdAforo);
+            const tdCantidad = document.createElement('td');
+            tdCantidad.textContent = e.cantidad;
+            tr.appendChild(tdCantidad);
 
             //botones
 
@@ -64,45 +65,57 @@ async function getEventos() {
             btnVer.addEventListener('click', async () => {
 
                 try {
-                    const res = await fetch(`http://localhost:9003/eventos/uno/${e.idEvento}`);
-                    const ver = await res.json();
-                    console.log(ver);
-
                     const listaVer = document.getElementById('listaVer');
                     listaVer.innerHTML = '';
 
+                    const contenedorVer = document.getElementById('contenedorVer');
+                    // Mostrar el contenedor
+                    contenedorVer.style.display = 'flex';
+
+                    console.log("id de evento: " + e.evento.idEvento);
+                    console.log("descripcion : " + e.evento.descripcion);
+
                     const ulDescripcion = document.createElement('ul');
-                    ulDescripcion.textContent = `Descripcion: ${ver.descripcion}`;
+                    ulDescripcion.textContent = `Descripcion: ${e.evento.descripcion}`;
+
+                    const ulObservaciones = document.createElement('ul');
+                    ulObservaciones.textContent = `Observaciones: ${e.observaciones}`;
+
+                    const ulAforoMaximo = document.createElement('ul');
+                    ulAforoMaximo.textContent = `Aforo máximo: ${e.evento.aforoMaximo}`;
 
                     const ulFechaInicio = document.createElement('ul');
-                    ulFechaInicio.textContent = `Fecha inicio: ${ver.fechaInicio}`;
+                    ulFechaInicio.textContent = `Fecha inicio: ${e.evento.fechaInicio}`;
 
                     const ulFechaAlta = document.createElement('ul');
-                    ulFechaAlta.textContent = `Fecha alta: ${ver.fechaAlta}`;
+                    ulFechaAlta.textContent = `Fecha alta: ${e.evento.fechaAlta}`;
 
                     const ulDireccion = document.createElement('ul');
-                    ulDireccion.textContent = `Direccion: ${ver.direccion}`;
+                    ulDireccion.textContent = `Direccion: ${e.evento.direccion}`;
 
                     const ulDuracion = document.createElement('ul');
-                    ulDuracion.textContent = `Duracion: ${ver.duracion}`;
+                    ulDuracion.textContent = `Duracion: ${e.evento.duracion}`;
 
                     const ulUnidadDuracion = document.createElement('ul');
-                    ulUnidadDuracion.textContent = `Unidad duracion: ${ver.unidadDuracion}`;
+                    ulUnidadDuracion.textContent = `Unidad duracion: ${e.evento.unidadDuracion}`;
 
                     const botonCerrar = document.createElement('button');
                     botonCerrar.type = 'button';
                     botonCerrar.textContent = 'Cerrar';
                     botonCerrar.addEventListener('click', () => {
-                        listaVer.innerHTML = '';
+                        contenedorVer.style.display = 'none';
                     });
 
                     listaVer.appendChild(ulDescripcion);
+                    listaVer.appendChild(ulObservaciones);
+                    listaVer.appendChild(ulAforoMaximo);
                     listaVer.appendChild(ulFechaInicio);
                     listaVer.appendChild(ulFechaAlta);
                     listaVer.appendChild(ulDireccion);
                     listaVer.appendChild(ulDuracion);
                     listaVer.appendChild(ulUnidadDuracion);
                     listaVer.appendChild(botonCerrar);
+
 
 
                 } catch (error) {
@@ -122,7 +135,7 @@ async function getEventos() {
 
             btnModificar.addEventListener('click', async () => {
                 try {
-                    const res = await fetch(`http://localhost:9003/eventos/uno/${e.idEvento}`)
+                    const res = await fetch(`http://localhost:9003/reservas/usuario/${idCliente}`)
                     const data = await res.json();
                     console.log(data);
 
@@ -235,16 +248,18 @@ async function getEventos() {
             btnEliminar.classList.add('btn-eliminar');
             tdEliminar.appendChild(btnEliminar);
             tr.appendChild(tdEliminar);
+            
 
             async function eliminarEventos() {
-                const elmi = await fetch(`http://localhost:9003/eventos/eliminar/${e.idEvento}`, {
+                const elmi = await fetch(`http://localhost:9003/reservas/eliminar/${e.idReserva}`, {
                     method: 'DELETE',
                 });
 
             }
 
             btnEliminar.addEventListener('click', async () => {
-                const confirmacion = confirm(`¿Estás seguro que quieres eliminar el evento ${e.nombre}?`);
+                const confirmacion = confirm(`¿Estás seguro que quieres eliminar el evento ${e.evento.nombre}?`);
+                console.log("id de la reserva:" + e.idReserva);
                 if (!confirmacion) return;
 
                 await eliminarEventos();
@@ -260,7 +275,7 @@ async function getEventos() {
 
     }
     catch (error) {
-        console.log("error eliminar");
+        console.log("error get evento: " , error);
     }
 }
 

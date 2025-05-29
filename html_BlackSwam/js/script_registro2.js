@@ -316,7 +316,7 @@ async function getEventos() {
 
     }
     catch (error) {
-        console.log("error eliminar");
+        console.log("error get eventos");
     }
 }
 //formulario para añadir cosas
