@@ -261,6 +261,8 @@ async function getEventos() {
                             botonCerrar.classList.add('btn-cerrar');
                             botonCerrar.addEventListener('click', () => {
                                 listaReserva.innerHTML = '';
+                                document.getElementById("contenedorReserva").innerHTML = '';
+                                document.getElementById("contenedorReserva").style.display = 'none'; 
                             });
 
                             listaReserva.appendChild(ulIdReserva);
@@ -271,6 +273,7 @@ async function getEventos() {
                             listaReserva.appendChild(ulCantidad);
                             listaReserva.appendChild(ulPrecioVenta);
                             listaReserva.appendChild(botonCerrar);
+
                         });
                     } else {
                         // Si no hay reservas

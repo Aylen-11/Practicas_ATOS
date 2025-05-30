@@ -376,6 +376,7 @@ input[type="file"] {
 
 
 /* boton modificar */
+/* Botón Modificar */
 .btn-modificar {
   background: linear-gradient(to right, #4b0000, hsl(0, 98%, 26%));
   color: #ffffff;
@@ -395,26 +396,43 @@ input[type="file"] {
   transform: scale(1.05);
 }
 
+/* Contenedor del formulario tipo tarjetita abajo */
+#contenedorModificar {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
 
-/* ver reserva*/
-.btn-verreserva {
-  background: linear-gradient(to right, #4b0000, hsl(0, 98%, 26%));
-  color: #ffffff;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  padding: 10px 35px;
-  border: none;
-  border-radius: 8px;
+/* El formulario estará oculto al inicio */
+#formularioModificar:empty {
+  display: none;
+}
+
+/* Estilo del formulario visible */
+#formularioModificar:not(:empty) {
+  background-color: #f9f9f9;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 90%;
+  max-width: 600px;
+  border: 1px solid #ddd;
+}
+
+/* Inputs del formulario */
+#formularioModificar input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
   font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-  transition: transform 0.2s ease, background-color 0.3s;
+  width: 100%;
 }
 
-.btn-verreserva:hover {
-  background-color: #ffeaea;
-  transform: scale(1.05);
-}
 
 /*boton eliminar*/
 .btn-eliminar {
@@ -533,13 +551,14 @@ input[type="file"] {
 /* vetana emergente de ver todas la reservas*/
 
 /* Fondo del modal */
-#contenedorReseserva {
+
+ #contenedorReserva {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(196, 196, 196, 0.548); 
+  background: rgba(196, 196, 196, 0.548);
   display: none;
   justify-content: center;
   align-items: center;
@@ -589,4 +608,23 @@ input[type="file"] {
   background-color: #ffffff;
   color: white;
   
+}
+/* ver reserva*/
+.btn-verreserva {
+  background: linear-gradient(to right, #9b0505, hsl(0, 98%, 26%));
+  color: #ffffff;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  padding: 10px 35px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, background-color 0.3s;
+}
+
+.btn-verreserva:hover {
+  background-color: #ffeaea;
+  transform: scale(1.05);
 }
